@@ -77,9 +77,16 @@
                     </div>
                     <p class="mt-4 text-center" style="color: #393f81">
                       Have an account?
-                      <a href="/login" style="color: #393f81">Login here</a>
+                      <a href="./login" style="color: #393f81">Login here</a>
                     </p>
                   </form>
+                  <div class="error">
+                    <% if(messages.error){%>
+                    <p class="text-center" style="color: red">
+                      <%=messages.error%>
+                    </p>
+                    <%}%>
+                  </div>
                 </div>
 
                 <div
