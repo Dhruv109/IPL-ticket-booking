@@ -18,7 +18,17 @@ router.get("/dashboard", (req, res) => {
     //return res.status(401).send();
   } else {
     console.log(req.session.user);
-    res.render("dashboard.ejs", { user: req.session.user });
+    const sql = "SELECT * FROM MATCHES";
+    connection
+      .promise()
+      .query(sql)
+      .then((matches) => {
+        //console.log(matches);
+        res.render("dashboard.ejs", {
+          user: req.session.user,
+          matches: matches[0],
+        });
+      });
   }
 });
 
