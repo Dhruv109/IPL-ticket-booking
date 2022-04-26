@@ -8,6 +8,9 @@ const port = 3000;
 //getting routes
 const login = require("./routes/registerlogin");
 const createTables = require("./routes/createTables");
+const gettables = require("./routes/gettables");
+const bookings = require("./routes/bookings");
+
 if (process.env.NODE_ENV !== "production") {
   require("dotenv").config({ path: __dirname + "/.env" });
 }
@@ -34,8 +37,11 @@ app.get("/", (req, res) => {
 });
 
 //registering and loggin in route
+app.use(express.static("public"));
 app.use("/rl", login);
+app.use("/user", gettables);
 app.use("/new", createTables);
+app.use("/user/booking", bookings);
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
 });

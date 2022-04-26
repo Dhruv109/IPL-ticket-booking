@@ -1,0 +1,78 @@
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #121212;
+  color: white;
+}
+
+.container {
+  width: 100%;
+  margin: auto;
+}
+
+.container h1 {
+  text-align: center;
+  margin: 2rem 0;
+}
+
+.container .card-container {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (minmax(250px, 1fr))[auto-fit];
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  -webkit-column-gap: 1.5rem;
+          column-gap: 1.5rem;
+  row-gap: 1.5rem;
+}
+
+.container .card-container .card {
+  padding: 1rem;
+  color: white;
+  background-color: #272727;
+}
+
+.container .card-container .versus {
+  color: #35e912;
+}
+
+.container .card-container .seats {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.container .card-container .seats .seat {
+  padding: 0 4px;
+}
+
+.head {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: #35e912;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+}
+
+.head h1 {
+  width: 100%;
+}
+
+.head button {
+  background-color: #121212;
+  border: none;
+  border-bottom: 2px solid red;
+  font-size: 1.2rem;
+  color: white;
+}
+/*# sourceMappingURL=mybooking.css.map */

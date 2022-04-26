@@ -6,17 +6,39 @@
   crossorigin="anonymous"
 />
 <link type="text/css" rel="stylesheet" href="/cssforejs.css" />
+<link type="text/css" rel="stylesheet" href="/css/dashboard.css" />
 <body>
   <header>
     <h1>Welcome <%=user.NAME%></h1>
-    <div class="card-container">
-      <% matches.forEach((match)=>{ %>
-      <div class="card">
-        <h3 class="teams"><%=match.TEAM_1%> vs <%=match.TEAM_2%></h3>
-        <p class="date"><%=match.MATCH_DATE%></p>
-        <p class="TIME"><%=match.MATCH_TIME%></p>
-      </div>
-      <% }); %>
-    </div>
+    <a href="/user/booking/mybookings"><button>Bookings</button></a>
+    <a href="/rl/logout"><button>Logout</button></a>
   </header>
+  <section>
+    <div class="container">
+      <div class="inputs">
+        <form action="/user/filtermatches" method="POST">
+          <label for="city">City</label>
+          <input type="text" id="city" name="city" />
+          <label for="date">Date</label>
+          <input type="date" id="date" name="date" />
+          <label for="team">Team</label>
+          <input type="text" id="team" name="team" />
+          <button type="submit">Go</button>
+        </form>
+      </div>
+      <div class="card-container">
+        <% matches.forEach((match)=>{ %>
+        <div class="card">
+          <h3 class="teams"><%=match.TEAM_1%> vs <%=match.TEAM_2%></h3>
+          <h6 class="date"><%=match.STADIUM_NAME%></h6>
+          <h6 class="date"><%=match.MATCH_DATE.toDateString()%></h6>
+          <p class="TIME"><%=match.MATCH_TIME%></p>
+          <a href="/user/booking/match/<%=match.MATCH_ID%>">
+            <button>Book Tickets</button>
+          </a>
+        </div>
+        <% }); %>
+      </div>
+    </div>
+  </section>
 </body>

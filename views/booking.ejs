@@ -1,0 +1,66 @@
+<meta content="width=device-width, initial-scale=1" name="viewport" />
+<link
+  href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+  rel="stylesheet"
+  integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+  crossorigin="anonymous"
+/>
+<link type="text/css" rel="stylesheet" href="/cssforejs.css" />
+<link type="text/css" rel="stylesheet" href="/css/booking.css" />
+<body>
+  <div class="container">
+    <div class="inner-container">
+      <div class="head">
+        <h1><%=match.TEAM_1%> vs <%=match.TEAM_2%></h1>
+        <a href="/rl/dashboard"><button>Matches</button></a>
+      </div>
+      <div class="inputs">
+        <form action="/user/booking/book" method="POST">
+          <label for="noOfSeats">Number of Seats</label>
+          <select id="noOfSeats" name="noOfSeats">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+          </select>
+          <label for="category">Category</label>
+          <select id="category" name="category">
+            <option value="A">A</option>
+            <option value="B">B</option>
+            <option value="C">C</option>
+          </select>
+
+          <button type="submit">Go</button>
+        </form>
+      </div>
+      <div class="bottom">
+        <div class="seats-left">
+          <h3>Number of seats left</h3>
+          <% seats.forEach((seat)=>{ %>
+          <h5><%=seat.CATEGORY%> : <%=seat.COUNT%></h5>
+          <% }); %>
+        </div>
+        <div class="prices">
+          <h3>Prices</h3>
+          <% seats.forEach((seat)=>{ %>
+          <h5><%=seat.CATEGORY%> : <%=seat.PRICE%></h5>
+          <% }); %>
+        </div>
+      </div>
+    </div>
+    <div class="error">
+      <% if(messages.error){%>
+      <p class="text-center" style="color: red"><%=messages.error%></p>
+      <%}%>
+    </div>
+    <% if(locals.ticket){%>
+    <section><%- include ('ticket.ejs') , {ticket : ticket}%></section>
+    <%}%>
+  </div>
+</body>

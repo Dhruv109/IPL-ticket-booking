@@ -26,9 +26,14 @@ router.get("/createtables", (req, res) => {
         if (err) throw err;
         console.log("matches Table created!");
       });
-
+      const seatCategory =
+        "CREATE TABLE IF NOT EXISTS SEAT_CATEGORY (CATEGORY VARCHAR(20), PRICE INT, PRIMARY KEY(CATEGORY))";
+      connection.query(seatCategory, (err, res) => {
+        if (err) throw err;
+        console.log("CATEOGRY Table created!");
+      });
       const seatsTable =
-        "CREATE TABLE IF NOT EXISTS SEATS (SEAT_ID INT NOT NULL AUTO_INCREMENT, MATCH_ID INT, SEAT_NUMBER INT, BOOKED INT, CATEGORY VARCHAR(10), PRIMARY KEY(SEAT_ID), CONSTRAINT UC_SEAT UNIQUE(MATCH_ID, SEAT_NUMBER), FOREIGN KEY(MATCH_ID) REFERENCES MATCHES(MATCH_ID) ON DELETE CASCADE)";
+        "CREATE TABLE IF NOT EXISTS SEATS (SEAT_ID INT NOT NULL AUTO_INCREMENT, MATCH_ID INT, SEAT_NUMBER INT, BOOKED INT, CATEGORY VARCHAR(10), PRIMARY KEY(SEAT_ID), CONSTRAINT UC_SEAT UNIQUE(MATCH_ID, SEAT_NUMBER), FOREIGN KEY(MATCH_ID) REFERENCES MATCHES(MATCH_ID) ON DELETE CASCADE), FOREIGN KEY(CATEGORY) REFERENCES SEAT_CATEGORY(CATEGORY)";
       connection.query(seatsTable, (err, res) => {
         if (err) throw err;
         console.log("SEATS Table created!");

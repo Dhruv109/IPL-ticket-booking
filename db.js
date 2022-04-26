@@ -8,6 +8,7 @@ const connection = db.createConnection({
   host: "localhost", // host for connection
   user: "root", // username of the mysql connection
   password: process.env.DB_PASSWORD, // password of the mysql connection
+  multipleStatements: true,
 });
 connection.connect((err) => {
   if (err) {

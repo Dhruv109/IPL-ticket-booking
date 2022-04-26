@@ -17,8 +17,8 @@ router.get("/dashboard", (req, res) => {
     res.redirect("./login");
     //return res.status(401).send();
   } else {
-    console.log(req.session.user);
-    const sql = "SELECT * FROM MATCHES";
+    //console.log(req.session.user);
+    const sql = "SELECT * FROM MATCHES NATURAL JOIN STADIUMS";
     connection
       .promise()
       .query(sql)
@@ -74,6 +74,16 @@ router.post("/login", async (req, res) => {
       res.status(500).send();
     }
   });
+});
+
+router.get("/logout", (req, res) => {
+  if (req.session) {
+    req.session.user = null;
+    req.session.destroy((err) => {
+      if (err) res.status(400).send("Unable to logout");
+      else res.redirect("./login");
+    });
+  } else req.end();
 });
 
 module.exports = router;

@@ -1,0 +1,23 @@
+<section class="ticket">
+  <div class="ticket-container">
+    <h3 class="versus"><%=ticket.team_1%> vs <%=ticket.team_2%></h3>
+    <div class="left">
+      <h5>City : <%=ticket.city%></h5>
+      <h5>Date : <%=ticket.date%></h5>
+      <h5>Time : <%=ticket.time%></h5>
+    </div>
+    <div class="right">
+      <h5>Seat Category : <%=ticket.category%></h5>
+      <div class="seats">
+        <h5>Seat Number(s):</h5>
+        <%ticket.seats.forEach((seat, index)=>{%>
+        <h5 class="seat"><%=seat%></h5>
+        <% }); %>
+      </div>
+      <h5>Cost : <%=ticket.cost%></h5>
+    </div>
+    <a href="/user/booking/finalbooking"
+      ><button class="book-btn">BOOK</button></a
+    >
+  </div>
+</section>
