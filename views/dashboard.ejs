@@ -9,5 +9,14 @@
 <body>
   <header>
     <h1>Welcome <%=user.NAME%></h1>
+    <div class="card-container">
+      <% matches.forEach((match)=>{ %>
+      <div class="card">
+        <h3 class="teams"><%=match.TEAM_1%> vs <%=match.TEAM_2%></h3>
+        <p class="date"><%=match.MATCH_DATE%></p>
+        <p class="TIME"><%=match.MATCH_TIME%></p>
+      </div>
+      <% }); %>
+    </div>
   </header>
 </body>

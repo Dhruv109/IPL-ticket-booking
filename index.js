@@ -7,7 +7,7 @@ const port = 3000;
 
 //getting routes
 const login = require("./routes/registerlogin");
-
+const createTables = require("./routes/createTables");
 if (process.env.NODE_ENV !== "production") {
   require("dotenv").config({ path: __dirname + "/.env" });
 }
@@ -35,7 +35,7 @@ app.get("/", (req, res) => {
 
 //registering and loggin in route
 app.use("/rl", login);
-
+app.use("/new", createTables);
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
 });

@@ -16,13 +16,13 @@ connection.connect((err) => {
     console.log("connection created with Mysql successfully");
   }
 });
-const sql = "CREATE DATABASE IF NOT EXISTS myiplsystem";
+const sql = "CREATE DATABASE IF NOT EXISTS ipl";
 connection.query(sql, (err, res) => {
   if (err) throw err;
   console.log("DB created!");
 });
 //use ipldb
-connection.query("USE myiplsystem", (err, res) => {
+connection.query("USE ipl", (err, res) => {
   if (err) throw err;
   console.log("using IPL DB!");
 });
